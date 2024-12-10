@@ -3,7 +3,7 @@ async function partOne() {
   const lines = data.split('\n');
   let col1: number[] = [];
   let col2: number[] = [];
-  lines.forEach((line, i) => {
+  lines.forEach((line) => {
     const nums = line.trim().split(/\s+/).map(Number);
     col1.push(nums[0]);
     col2.push(nums[1]);
