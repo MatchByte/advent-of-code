@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 async function partOne() {
   const data = await Deno.readTextFile('./part_one.txt');
   const lines = data.split('\n');
