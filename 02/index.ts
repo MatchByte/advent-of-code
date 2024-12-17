@@ -5,9 +5,21 @@ async function partOne() {
     .trim()
     .split('\n')
     .map((line) => line.trim().split(/\s+/));
-  const lineOne = lines[0];
-  const incr = checkSequence(lineOne);
-  console.log(incr);
+  lines.forEach((line, index) => {
+    let matches = checkSequence(line);
+    if (matches.isIncreasing) {
+      console.log('INCREASING');
+      console.log(line);
+    }
+    if (matches.isDecreasing) {
+      console.log('DECREASING');
+      console.log(line);
+    }
+    if (matches.unsafe) {
+      console.log('NEITHER');
+      console.log(line);
+    }
+  });
 }
 
 function checkSequence(array) {
@@ -20,10 +32,15 @@ function checkSequence(array) {
         if (currentValue < arr[index + 1]) {
           accumulator.isDecreasing = false;
         }
+        if (currentValue === arr[index + 1]) {
+          accumulator.isDecreasing = false;
+          accumulator.isIncreasing = false;
+          accumulator.unsafe = true;
+        }
       }
       return accumulator;
     },
-    { isIncreasing: true, isDecreasing: true }
+    { isIncreasing: true, isDecreasing: true, unsafe: false }
   );
 }
 
