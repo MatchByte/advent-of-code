@@ -1,20 +1,30 @@
 // deno-lint-ignore-file
 async function partOne() {
   const input = await Deno.readTextFile('./input.txt');
-  const lines = input.trim().split('\n').map((line => line.trim().split(/\s+/)));
-  console.log({lines});
-  let testArray = [7, 6, 4, 2, 1];
-  let pairs = getArrayPairs(testArray);
+  const lines = input
+    .trim()
+    .split('\n')
+    .map((line) => line.trim().split(/\s+/));
+  const lineOne = lines[0];
+  const incr = checkSequence(lineOne);
+  console.log(incr);
+}
 
+function checkSequence(array) {
+  return array.reduce(
+    (accumulator, currentValue, index, arr) => {
+      if (index < arr.length - 1) {
+        if (currentValue > arr[index + 1]) {
+          accumulator.isIncreasing = false;
+        }
+        if (currentValue < arr[index + 1]) {
+          accumulator.isDecreasing = false;
+        }
+      }
+      return accumulator;
+    },
+    { isIncreasing: true, isDecreasing: true }
+  );
 }
 
 await partOne();
-
-function getArrayPairs(array) {
-  return array.reduce((pairs, currentValue, i) => {
-    if (i < array.length - 1) {
-      pairs.push([currentValue, array[i + 1]]);
-    }
-    return pairs;
-  }, []);
-}
