@@ -21,7 +21,7 @@ async function partOne() {
     }, 0);
 }
 // const a = await partOne();
-// console.log(a);
+
 
 /* part two */
 
@@ -45,7 +45,8 @@ async function partTwo() {
     tot += total;
   }
 
-}await partTwo();
+}
+await partTwo();
 
 function findNumCount(array: number[], target: number) {
   return array.filter((x) => x === target);
