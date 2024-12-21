@@ -1,22 +1,19 @@
 // deno-lint-ignore-file
 async function partOne() {
-  const input = await Deno.readTextFile('./input.txt');
+  const input = await Deno.readTextFile("./input.txt");
   const lines = input
     .trim()
-    .split('\n')
+    .split("\n")
     .map((line) => line.trim().split(/\s+/));
   lines.forEach((line, index) => {
     let matches = checkSequence(line);
     if (matches.isIncreasing) {
-      console.log('INCREASING');
       console.log(line);
     }
     if (matches.isDecreasing) {
-      console.log('DECREASING');
       console.log(line);
     }
     if (matches.unsafe) {
-      console.log('NEITHER');
       console.log(line);
     }
   });
@@ -40,7 +37,7 @@ function checkSequence(array) {
       }
       return accumulator;
     },
-    { isIncreasing: true, isDecreasing: true, unsafe: false }
+    { isIncreasing: true, isDecreasing: true, unsafe: false },
   );
 }
 
