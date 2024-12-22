@@ -8,13 +8,13 @@ async function partOne() {
   lines.forEach((line, index) => {
     let matches = checkSequence(line);
     if (matches.isIncreasing) {
-      console.log(line);
+      // this condition runs if sequence is increasing
     }
     if (matches.isDecreasing) {
-      console.log(line);
+      // this condition runs if the sequence is decreasing
     }
     if (matches.unsafe) {
-      console.log(line);
+      // this sequence will run if two integers are the same in an adjacent sequence [4,4]
     }
   });
 }
